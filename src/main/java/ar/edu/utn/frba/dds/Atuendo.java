@@ -12,4 +12,10 @@ public class Atuendo {
         prendaCalzado = calzado;
         prendaAccesorio = accesorio;
     }
+
+    public Atuendo(PrendaSuperior parteSuperior, PrendaInferior parteInferior, PrendaCalzado calzado){
+        prendaParteSuperior = parteSuperior;
+        prendaParteInferior = parteInferior;
+        prendaCalzado = calzado;
+    }
 }
