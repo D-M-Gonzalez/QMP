@@ -12,5 +12,6 @@
 ## Particularidades del Diseño
 
   Debido a estas desiciones, es facil poder mantener cada una de las prendas existentes al estar divididas en su propia clase. Es perfectamente posible encapsular todo el comportamiento de cada tipo o categoria no permitiendo inconsistencias en la creación de objetos y permite la facil extensión del proyecto ya que en el caso de querer agregar una categoría o tipo, solo se tiene que elegir correctamente de quien hereda. Cada nivel de prenda tiene sus propias características y métodos que son comunes a sus partes.
+  Utilizando los constructores nos aseguramos poder respetar una creación de objetos cumpliendo con todos los requerimientos sin posibilidad de errores.
 
 
