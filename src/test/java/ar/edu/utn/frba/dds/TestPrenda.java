@@ -4,10 +4,10 @@ import ar.edu.utn.frba.dds.enums.Categoria;
 import ar.edu.utn.frba.dds.enums.Material;
 import ar.edu.utn.frba.dds.enums.TipoSuperior;
 import ar.edu.utn.frba.dds.enums.Trama;
-import ar.edu.utn.frba.dds.models.Borrador;
-import ar.edu.utn.frba.dds.models.Color;
-import ar.edu.utn.frba.dds.models.Prenda;
-import ar.edu.utn.frba.dds.models.TipoPrenda;
+import ar.edu.utn.frba.dds.models.prenda.Borrador;
+import ar.edu.utn.frba.dds.models.prenda.colores.Color;
+import ar.edu.utn.frba.dds.models.prenda.Prenda;
+import ar.edu.utn.frba.dds.models.prenda.TipoPrenda;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -41,7 +41,8 @@ public class TestPrenda {
   void CrearPrendaTipoOK(){
     Borrador borrador = new Borrador();
     borrador.construirPrenda(tipoCamisa);
-    borrador.construirPrenda(color1,color2,Material.ALGODON, Trama.LUNARES);
+    borrador.construirPrenda(color1,color2);
+    borrador.construirPrenda(Material.ALGODON, Trama.LUNARES);
 
     Prenda prenda = borrador.generarPrenda();
 
@@ -53,7 +54,8 @@ public class TestPrenda {
   void CrearPrendaCategoriaOK(){
     Borrador borrador = new Borrador();
     borrador.construirPrenda(tipoCamisa);
-    borrador.construirPrenda(color1,color2,Material.ALGODON, Trama.LUNARES);
+    borrador.construirPrenda(color1,color2);
+    borrador.construirPrenda(Material.ALGODON, Trama.LUNARES);
 
     Prenda prenda = borrador.generarPrenda();
 
@@ -65,7 +67,8 @@ public class TestPrenda {
   void CrearPrendaMaterialOK(){
     Borrador borrador = new Borrador();
     borrador.construirPrenda(tipoCamisa);
-    borrador.construirPrenda(color1,color2,Material.ALGODON, Trama.LUNARES);
+    borrador.construirPrenda(color1,color2);
+    borrador.construirPrenda(Material.ALGODON, Trama.LUNARES);
 
     Prenda prenda = borrador.generarPrenda();
 
@@ -77,7 +80,8 @@ public class TestPrenda {
   void CrearPrendaColorPrimarioOK(){
     Borrador borrador = new Borrador();
     borrador.construirPrenda(tipoCamisa);
-    borrador.construirPrenda(color1,color2,Material.ALGODON, Trama.LUNARES);
+    borrador.construirPrenda(color1,color2);
+    borrador.construirPrenda(Material.ALGODON, Trama.LUNARES);
 
     Prenda prenda = borrador.generarPrenda();
 
@@ -89,7 +93,8 @@ public class TestPrenda {
   void CrearPrendaColorSecundarioOK(){
     Borrador borrador = new Borrador();
     borrador.construirPrenda(tipoCamisa);
-    borrador.construirPrenda(color1,color2,Material.ALGODON, Trama.LUNARES);
+    borrador.construirPrenda(color1,color2);
+    borrador.construirPrenda(Material.ALGODON, Trama.LUNARES);
 
     Prenda prenda = borrador.generarPrenda();
 
@@ -101,7 +106,8 @@ public class TestPrenda {
   void CrearPrendaTramaOK(){
     Borrador borrador = new Borrador();
     borrador.construirPrenda(tipoCamisa);
-    borrador.construirPrenda(color1,color2,Material.ALGODON, Trama.LUNARES);
+    borrador.construirPrenda(color1,color2);
+    borrador.construirPrenda(Material.ALGODON, Trama.LUNARES);
 
     Prenda prenda = borrador.generarPrenda();
 
@@ -113,7 +119,8 @@ public class TestPrenda {
   void CrearPrendaSinColorSecundarioOK(){
     Borrador borrador = new Borrador();
     borrador.construirPrenda(tipoCamisa);
-    borrador.construirPrenda(color1,null,Material.ALGODON, Trama.LUNARES);
+    borrador.construirPrenda(color1,null);
+    borrador.construirPrenda(Material.ALGODON, Trama.LUNARES);
 
     Prenda prenda = borrador.generarPrenda();
 
@@ -125,7 +132,8 @@ public class TestPrenda {
   void CrearPrendaSinTramaOK(){
     Borrador borrador = new Borrador();
     borrador.construirPrenda(tipoCamisa);
-    borrador.construirPrenda(color1,null,Material.ALGODON, null);
+    borrador.construirPrenda(color1,color2);
+    borrador.construirPrenda(Material.ALGODON, null);
 
     Prenda prenda = borrador.generarPrenda();
 
@@ -151,7 +159,8 @@ public class TestPrenda {
   void CrearPrendaSinColorPrimario(){
     Borrador borrador = new Borrador();
     borrador.construirPrenda(tipoCamisa);
-    borrador.construirPrenda(null,null,Material.ALGODON, Trama.LUNARES);
+    borrador.construirPrenda(null,color2);
+    borrador.construirPrenda(Material.ALGODON, Trama.LUNARES);
 
     RuntimeException thrown = assertThrows(
         RuntimeException.class,
@@ -169,7 +178,10 @@ public class TestPrenda {
 
     RuntimeException thrown = assertThrows(
         RuntimeException.class,
-        () -> borrador.construirPrenda(color1,null,Material.ALGODON, Trama.LUNARES),
+        () -> {
+          borrador.construirPrenda(color1,null);
+          borrador.construirPrenda(Material.ALGODON, Trama.LUNARES);
+        },
         "Se esperar excepción en la creación de Prenda"
     );
 
@@ -184,7 +196,10 @@ public class TestPrenda {
 
     RuntimeException thrown = assertThrows(
         RuntimeException.class,
-        () -> borrador.construirPrenda(color1,null,Material.JEAN, Trama.LUNARES),
+        () -> {
+          borrador.construirPrenda(color1,null);
+          borrador.construirPrenda(Material.JEAN, Trama.LUNARES);
+        },
         "Se esperar excepción en la creación de Prenda"
     );
 

@@ -1,4 +1,4 @@
-package ar.edu.utn.frba.dds.models;
+package ar.edu.utn.frba.dds.models.prenda;
 
 public class Sugerencia {
   private Prenda superior;
@@ -10,7 +10,4 @@ public class Sugerencia {
     this.inferior = inferior;
     this.calzado = calzado;
   }
-
-
-
 }

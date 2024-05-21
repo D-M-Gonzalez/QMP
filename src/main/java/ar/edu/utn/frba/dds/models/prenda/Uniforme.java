@@ -1,4 +1,4 @@
-package ar.edu.utn.frba.dds.models;
+package ar.edu.utn.frba.dds.models.prenda;
 
 import ar.edu.utn.frba.dds.interfaces.Iuniforme;
 

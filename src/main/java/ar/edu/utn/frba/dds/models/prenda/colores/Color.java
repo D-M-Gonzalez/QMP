@@ -1,4 +1,4 @@
-package ar.edu.utn.frba.dds.models;
+package ar.edu.utn.frba.dds.models.prenda.colores;
 
 public class Color {
   public int red;
