@@ -5,6 +5,8 @@ import ar.edu.utn.frba.dds.models.prenda.Prenda;
 import java.util.ArrayList;
 import java.util.List;
 
+//ojo, el que propone tambien puede aceptar y rechazar
+//agregar el dueño al guardarropas
 public class Guardarropas {
   private List<Prenda> prendas = new ArrayList<>();
   private List<Propuesta> propuestas = new ArrayList<>();
@@ -14,11 +16,10 @@ public class Guardarropas {
         .filter(propuesta -> propuesta.getEstado() == EstadoPropuesta.PENDIENTE).toList();
   }
 
-  public void agregarPropuesta(Propuesta propuesta) {
+  public void proponer(PropuestaAgregar propuesta) {
     propuestas.add(propuesta);
   }
-
-  public void quitarPropuesta(Propuesta propuesta) {
+  public void proponer(PropuestaQuitar propuesta) {
     propuestas.remove(propuesta);
   }
 

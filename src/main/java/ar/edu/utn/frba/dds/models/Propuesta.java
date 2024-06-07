@@ -4,10 +4,19 @@ import ar.edu.utn.frba.dds.enums.EstadoPropuesta;
 import ar.edu.utn.frba.dds.models.prenda.Prenda;
 
 public abstract class Propuesta {
+  //los atributos son parte de cada propuesta especìfica y no de la clase abstracta
+  //podrìas luego tener una propuesta de atuendos
   protected Prenda prenda;
   protected Guardarropas guardarropas;
   private EstadoPropuesta estadoPropuesta = EstadoPropuesta.PENDIENTE;
 
+  //constructor de clase abstracta ver si conviene
+  public Propuesta(Prenda prenda, Guardarropas guardarropas) {
+    this.prenda = prenda;
+    this.guardarropas = guardarropas;
+  }
+
+  //revisar los nombres, no es convieniente que lleve propuesta
   public void aceptarPropuesta() {
     this.estadoPropuesta = EstadoPropuesta.ACEPTADA;
     this.realizarAceptacion();
@@ -17,7 +26,7 @@ public abstract class Propuesta {
     this.estadoPropuesta = EstadoPropuesta.PENDIENTE;
     this.realizarDeshacer();
   }
-
+  //Si no hace nada esto no hace falta, se podrìa eliminar directo
   public void rechazarPropuesta() {
     this.estadoPropuesta = EstadoPropuesta.RECHAZADA;
   }
