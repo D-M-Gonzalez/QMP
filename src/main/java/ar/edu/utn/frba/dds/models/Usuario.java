@@ -1,6 +1,6 @@
 package ar.edu.utn.frba.dds.models;
 
-import ar.edu.utn.frba.dds.enums.Alerta;
+import ar.edu.utn.frba.dds.interfaces.Accion;
 import ar.edu.utn.frba.dds.interfaces.SubscriptoresAlertas;
 import ar.edu.utn.frba.dds.interfaces.SubscriptoresSugerencias;
 import ar.edu.utn.frba.dds.models.prenda.Sugerencia;
@@ -16,6 +16,7 @@ public class Usuario implements SubscriptoresSugerencias, SubscriptoresAlertas {
   private ProveedorDeClima proveedorClima;
   private Sugerencia sugerenciaDiaria;
   private List<AlertaClimatica> alertas = new ArrayList<>();
+  private List<Accion> acciones = new ArrayList<>();
 
   public Usuario(int edad, ProveedorDeMotor proveedorMotor, ProveedorDeClima proveedorClima) {
     this.edad = edad;
@@ -25,6 +26,12 @@ public class Usuario implements SubscriptoresSugerencias, SubscriptoresAlertas {
 
   public void notificarAlertas(List<AlertaClimatica> alertas) {
     this.alertas = alertas;
+
+    alertas.forEach(alerta -> {
+      acciones.forEach(accion -> {
+        accion.realizar(alerta);
+      });
+    });
   }
 
   public void generarSugerenciaDiaria() {
@@ -53,6 +60,6 @@ public class Usuario implements SubscriptoresSugerencias, SubscriptoresAlertas {
   }
 
   public List<AlertaClimatica> obtenerAlertas() {
-    return alertas;
+    return new ArrayList<>(alertas);
   }
 }

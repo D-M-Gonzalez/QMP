@@ -3,11 +3,12 @@ package ar.edu.utn.frba.dds.models;
 import ar.edu.utn.frba.dds.models.prenda.Prenda;
 
 public class PropuestaAgregar extends Propuesta {
+
   public PropuestaAgregar(Prenda prenda, Guardarropas guardarropas) {
     this.guardarropas = guardarropas;
     this.prenda = prenda;
 
-    guardarropas.agregarPropuesta(this);
+    guardarropas.proponer(this);
   }
 
   protected void realizarAceptacion() {
