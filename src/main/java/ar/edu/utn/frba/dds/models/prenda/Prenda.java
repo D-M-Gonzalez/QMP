@@ -1,5 +1,6 @@
 package ar.edu.utn.frba.dds.models.prenda;
 
+import ar.edu.utn.frba.dds.enums.Alerta;
 import ar.edu.utn.frba.dds.enums.Categoria;
 import ar.edu.utn.frba.dds.enums.Formalidad;
 import ar.edu.utn.frba.dds.enums.Material;
@@ -10,22 +11,27 @@ import ar.edu.utn.frba.dds.models.prenda.colores.Color;
 import ar.edu.utn.frba.dds.models.prenda.colores.Colores;
 import ar.edu.utn.frba.dds.models.prenda.materiales.Materiales;
 
+import java.util.List;
+
 public class Prenda {
   private ItipoPrenda tipo;
   private Materiales materiales;
   private Colores colores;
   private Temperaturas temperaturas;
   private Formalidad formalidad;
+  private List<Alerta> climas;
 
   public Prenda(
       ItipoPrenda tipo,
       Colores colores,
       Materiales materiales,
-      Formalidad formalidad) {
+      Formalidad formalidad,
+      List<Alerta> climas) {
     this.tipo = tipo;
     this.colores = colores;
     this.materiales = materiales;
     this.formalidad = formalidad;
+    this.climas = climas;
   }
 
   public Categoria getCategoria() {
@@ -58,6 +64,10 @@ public class Prenda {
 
   public int getTempraturaMin() {
     return temperaturas.getTemperaturaMin();
+  }
+
+  public boolean isUsable(Alerta clima) {
+    return climas.contains(clima);
   }
 
   public boolean isInformal() {

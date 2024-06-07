@@ -7,4 +7,6 @@ import java.util.List;
 
 public interface ImotorSugerencias {
   List<Sugerencia> generarSugerencias(Usuario usuario, Guardarropas guardarropas);
+
+  Sugerencia generarSugerencia(Usuario usuario, Guardarropas guardarropas);
 }

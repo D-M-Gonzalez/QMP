@@ -35,4 +35,15 @@ class MotorSugerencias implements ImotorSugerencias {
     return combinaciones.stream().map(c -> new Sugerencia(c.get(0), c.get(1), c.get(2))).toList();
   }
 
+  public Sugerencia generarSugerencia(Usuario usuario, Guardarropas guardarropas) {
+    List<Prenda> prendasSuperiores = this.filtrarPrendas(usuario, guardarropas).stream()
+        .filter(p -> p.getTipo().getCategoria() == Categoria.SUPERIOR).toList();
+    List<Prenda> prendasInferiores = this.filtrarPrendas(usuario, guardarropas).stream()
+        .filter(p -> p.getTipo().getCategoria() == Categoria.INFERIOR).toList();
+    List<Prenda> calzados = this.filtrarPrendas(usuario, guardarropas).stream()
+        .filter(p -> p.getTipo().getCategoria() == Categoria.CALZADO).toList();
+
+    return new Sugerencia(prendasSuperiores.get(0), prendasInferiores.get(0), calzados.get(0));
+  }
+
 }

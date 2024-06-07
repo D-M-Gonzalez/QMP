@@ -1,8 +1,9 @@
 package ar.edu.utn.frba.dds.lib;
 
+import ar.edu.utn.frba.dds.interfaces.SdkClima;
 import java.util.*;
 
-public final class AccuWeatherAPI {
+public final class AccuWeatherAPI implements SdkClima {
 
   public final List<Map<String, Object>> getWeather(String ciudad) {
     return Arrays.asList(new HashMap<String, Object>() { {
@@ -23,4 +24,17 @@ public final class AccuWeatherAPI {
       }
     });
   }
+
+  public final Map<String, List<String>> getAlerts(String ciudad) {
+    List<String> lista = new ArrayList<>();
+    lista.add("HAIL");
+    lista.add("STORM");
+
+    return new HashMap<String, List<String>>() { {
+        put("Current", lista);
+      }
+    };
+  }
+
+
 }
