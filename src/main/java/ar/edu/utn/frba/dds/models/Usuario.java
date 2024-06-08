@@ -1,21 +1,18 @@
 package ar.edu.utn.frba.dds.models;
 
 import ar.edu.utn.frba.dds.interfaces.Accion;
-import ar.edu.utn.frba.dds.interfaces.SubscriptoresAlertas;
-import ar.edu.utn.frba.dds.interfaces.SubscriptoresSugerencias;
 import ar.edu.utn.frba.dds.models.prenda.Sugerencia;
 import ar.edu.utn.frba.dds.models.proveedores.ProveedorDeClima;
 import ar.edu.utn.frba.dds.models.proveedores.ProveedorDeMotor;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Usuario implements SubscriptoresSugerencias, SubscriptoresAlertas {
+public class Usuario {
   private int edad;
   private List<Guardarropas> guardarropas = new ArrayList<>();
   private ProveedorDeMotor proveedorMotor;
   private ProveedorDeClima proveedorClima;
   private Sugerencia sugerenciaDiaria;
-  private List<AlertaClimatica> alertas = new ArrayList<>();
   private List<Accion> acciones = new ArrayList<>();
 
   public Usuario(int edad, ProveedorDeMotor proveedorMotor, ProveedorDeClima proveedorClima) {
@@ -24,15 +21,15 @@ public class Usuario implements SubscriptoresSugerencias, SubscriptoresAlertas {
     this.proveedorClima = proveedorClima;
   }
 
+  /*
   public void notificarAlertas(List<AlertaClimatica> alertas) {
-    this.alertas = alertas;
-
     alertas.forEach(alerta -> {
       acciones.forEach(accion -> {
         accion.realizar(alerta);
       });
     });
   }
+  */
 
   public void generarSugerenciaDiaria() {
     sugerenciaDiaria = this.proveedorMotor.getMotor().generarSugerencia(this, guardarropas.get(0));
@@ -57,9 +54,5 @@ public class Usuario implements SubscriptoresSugerencias, SubscriptoresAlertas {
   public CondicionesClimaticas obtenerCondicionesDelDia() {
 
     return proveedorClima.getMotor().obtenerCondicionesClimaticas();
-  }
-
-  public List<AlertaClimatica> obtenerAlertas() {
-    return new ArrayList<>(alertas);
   }
 }
